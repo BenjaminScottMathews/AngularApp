@@ -1,0 +1,33 @@
+<div *ngIf="!mobile">
+  <div class="container-fluid dt-cont">
+    <ngb-carousel #carousel class="main-carousel"  [interval]="5000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus" (slide)="onSlide($event)" >
+        <ng-template ngbSlide *ngFor="let mov of movies; index as i" >
+            <div class="img-fluid carousel-inner">
+              <img class="col-12" [src]="mov.poster" alt="Currently playing movie..." (click)="redirect(mov)">
+              <div class="carousel-caption ">
+                <h6>{{mov.title}}</h6>
+              </div>
+            </div>
+        </ng-template>
+      </ngb-carousel>
+  </div>
+  <app-continue></app-continue>
+  <app-media-reel></app-media-reel>
+</div>
+
+<div *ngIf="mobile">
+  <div class="container-fluid mb-cont">
+    <ngb-carousel #carousel id="mb-main-carousel"  [interval]="5000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus" (slide)="onSlide($event)">
+        <ng-template ngbSlide *ngFor="let mov of movies; index as i">
+            <div class="img-fluid carousel-inner">
+              <img class="col-12" [src]="mov.poster" alt="Currently playing movie..." (click)="redirect(mov)">
+              <div class="carousel-caption ">
+                <h6>{{mov.title}}</h6>
+              </div>
+            </div>
+        </ng-template>
+      </ngb-carousel>
+  </div>
+  <app-continue></app-continue>
+  <app-media-reel></app-media-reel>
+</div>

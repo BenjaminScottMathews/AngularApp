@@ -1,0 +1,186 @@
+<div class="container-fluid full-container-dt-mb">
+
+<div *ngIf="!mobile" class="container-fluid detail-container">
+    <div class="row">
+        <!--<iframe class="col-8 vid-dt" frameborder="0" allowfullscreen [src]='safeURL'></iframe>-->
+        <youtube-player videoId={{allDetails.vid_key}} suggestedQuality="highres" [height]="460" [width]="880" [showBeforeIframeApiLoads]=true></youtube-player>
+        <div class="col-4 text-container">
+            <div class="row">
+                <h1 class="col-9 media-title">{{allDetails.title}}</h1>
+                <h4 style="margin-top: .5em;"><i>{{allDetails.tagline}}</i></h4>
+            </div>
+            <h4 class="row date-and-rating-dt">{{allDetails.date[0]}} |  &#9733; {{allDetails.vote}} | {{timeString}}</h4>
+            <div class="row smallText" >
+                <div><b style="font-weight: 500;">Genres:</b> {{genreString}} <br> <b>Spoken Languages:</b> {{langString}}</div>
+            </div>
+            <button *ngIf="added; else elseBlock" type="button" class="row btn btn-primary" (click)="removeFromWatch(allDetails)">Remove from Watchlist</button>
+            <ng-template #elseBlock><button type="button" class="row btn btn-primary" (click)="addToWatch(allDetails)">Add to Watchlist</button></ng-template>
+
+            <!-- ALERTS -->
+            <div #alert id="alert" *ngIf="addAlert" class="row alert alert-success alert-dismissible fade show" role="alert">Added to watchlist.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+            </div>
+            <div #alertR id="alertR" *ngIf="remAlert"class="row alert alert-danger alert-dismissible fade show" role="alert">Removed from watchlist.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row description-row">
+        <h5 class="col-3"><b>Description</b></h5>
+        <div class="col-12 smallText">{{allDetails.overview}}</div>
+    </div>
+    <div class="row share-row">
+        <h5 class="col-12"><b>Share</b></h5> 
+        <div class="row col-4 share-buttons" style="margin-top: -1px; margin-left: -2px;">
+            <a class="twitter-share-button" target="_blank"
+            href="https://twitter.com/intent/tweet?text=Watch%20{{tweetString}}">
+            <i class="fab fa-twitter fa-2x"></i></a>
+
+            <!-- Load Facebook SDK for JavaScript -->
+            <div id="fb-root"></div>
+            <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0" nonce="lkHqkESl"></script>
+
+            <!-- Your share button code -->
+            <div class="fb-share-button" data-href={{fbString}} data-layout="button_count" data-size="small">
+                <a target="_blank" [href]=fbString
+                class="fb-xfbml-parse-ignore"><i style="color: blue" class="fab fa-facebook-square fa-2x"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <h1 class="row col-10">Full Cast and Crew</h1>
+    <div class="container-fluid cast-container data-mdb-perfect-scrollbar='true'">
+        <div id ="castCards" class ="row flex-nowrap overflow-auto" >  <!--flex-nowrap-->
+            <div class="card col-2" *ngFor="let p of castList" (click)="openModal(content, p)">
+                <img class="card-img-top" src="{{p.headshot}}" alt="Actor">
+                <div class="card-body">
+                    <h5 class="card-title" style="font-weight: 600;">{{p.name}} <br> AS <br><span id="smallCastText">{{p.char}}</span></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-reviews [child]="childString" class="row"></app-reviews>
+</div>
+
+
+    <!-- MOBILE -->
+    <div *ngIf="mobile" class="container-fluid detail-container-mb">
+        <div class="row">
+            <youtube-player videoId={{allDetails.vid_key}} suggestedQuality="highres" [height]="200" [width]="340" [showBeforeIframeApiLoads]=true></youtube-player>
+        </div>
+        <div class="row">
+        <div class="col-12 text-container mb-details align-self-center">
+            <div class="row">
+                <h1 class="col-12">{{allDetails.title}}</h1>
+                <h4 class="col-12" style="margin-top: .5em;"><i>{{allDetails.tagline}}</i></h4>
+            </div>
+            <h4 class="row col-12">{{allDetails.date[0]}} |  &#9733;{{allDetails.vote}} | {{timeString}}</h4>
+            <div class="row smallText" >
+                <div class="col-12"><b style="font-weight: 500;">Genres:</b> {{genreString}}</div>
+                <div class="col-12"><b style="font-weight: 500;">Spoken Languages:</b> {{langString}}</div>
+            </div>
+            <button *ngIf="added; else elseBlock" type="button" class="row btn btn-primary btn-mb" (click)="removeFromWatch(allDetails)">Remove from Watchlist</button>
+            <ng-template #elseBlock><button type="button" class="row btn btn-primary btn-mb" (click)="addToWatch(allDetails)">Add to Watchlist</button></ng-template>
+        </div>
+        <div class="container-fluid alert-container-mb">
+            <!-- ALERTS -->
+            <div #alert id="alert-mb" *ngIf="addAlert" class="alert alert-success alert-dismissible fade show" role="alert">Added to watchlist.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div #alertR id="alertR-mb" *ngIf="remAlert" class="alert alert-danger alert-dismissible fade show" role="alert">Removed from watchlist.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        <div class="description-row-mb">
+            <h5 class="col-3"><b>Description</b></h5>
+            <div class="col-12 smallText">{{allDetails.overview}}</div>
+        </div>
+        <div class="row share-row-mb">
+            <h5 class="col-12"><b>Share</b></h5> 
+            <div class="row col-12 share-buttons" style="margin-top: -1px; margin-left: -2px;">
+                <a class="twitter-share-button" target="_blank"
+                href="https://twitter.com/intent/tweet?text=Watch%20{{tweetString}}">
+                <i class="fab fa-twitter fa-2x"></i></a>
+
+                <!-- Load Facebook SDK for JavaScript -->
+                <div id="fb-root"></div>
+                <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0" nonce="lkHqkESl"></script>
+
+                <!-- Your share button code -->
+                <div class="fb-share-button" data-href={{fbString}} data-layout="button_count" data-size="small">
+                    <a target="_blank" [href]=fbString
+                    class="fb-xfbml-parse-ignore"><i style="color: blue" class="fab fa-facebook-square fa-2x"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid cast-container-mb">
+        <h1 class="col-12 cast-headline-mb">Full Cast and Crew</h1>
+            <div id ="castCards-mb" class ="row flex-nowrap overflow-auto">  <!--flex-nowrap-->
+                <div class="card col-4 card-mb" *ngFor="let p of castList" (click)="openModal(content, p)">
+                    <img class="card-img-top" src="{{p.headshot}}" alt="Actor">
+                    <div class="card-body-mb col-12">
+                        <h5 class="card-title" style="font-weight: 600;">{{p.name}} <br> AS <br><span id="smallCastText">{{p.char}}</span></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <app-reviews [child]="childString" class="row"></app-reviews>
+    </div>
+</div>
+<app-ind-media-reel [child]="childString"></app-ind-media-reel>
+
+
+<!-- MODAL -->
+<ng-template #content let-modal>
+    <div class="modal-dialogue modal-lg" role="dialog">
+        <div class="modal-header">
+            <h4 class="modal-title">{{oldDetails.name}}</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body container-fluid">
+            <div class ="row">
+                <div class="col-md-3 col-sm-12">
+                    <img width="100%" src="{{oldDetails.headshot}}">
+                </div>
+                <div class="col-9">
+                    <div *ngIf="newDetails.birthday">Birth: {{newDetails.birthday}}</div>
+                    <div *ngIf="newDetails.birthplace">Birth Place: {{newDetails.birthplace}}</div>
+                    <div *ngIf="newDetails.gender">Gender: {{newDetails.gender}}</div>
+                    <div *ngIf="newDetails.homepage">Website: <a href={{newDetails.homepage}} target="_blank">{{newDetails.homepage}}</a></div>
+                    <div *ngIf="newDetails.knownFor">Known for: {{newDetails.knownFor}}</div>
+                    <div *ngIf="newDetails.AKA != ''">Also Known as: {{newDetails.AKA}}</div>
+                    <div class="social-icons">
+                        <a *ngIf="newDetails.imdb" target="_blank" href="{{newDetails.imdb}}">
+                            <i ngbPopover="Visit IMDB" triggers="mouseenter:mouseleave" style="color: goldenrod"class="fab fa-imdb fa-2x"></i></a>
+                        <a *ngIf="newDetails.ig" target="_blank" href="{{newDetails.ig}}">
+                            <i ngbPopover="Visit Instagram" triggers="mouseenter:mouseleave" style="color: purple"class="fab fa-instagram fa-2x"></i></a>
+                        <a *ngIf="newDetails.fb" target="_blank" href="{{newDetails.fb}}">
+                            <i ngbPopover="Visit Facebook" triggers="mouseenter:mouseleave" style="color: blue" class="fab fa-facebook-square fa-2x"></i></a>
+                        <a *ngIf="newDetails.twitter" target="_blank" href="{{newDetails.twitter}}">
+                            <i ngbPopover="Visit Twitter" triggers="mouseenter:mouseleave" class="fab fa-twitter fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="newDetails.bio" class ="row">
+                <h3 class="col-2">Biography</h3>
+                <div class="col-12">{{newDetails.bio}}</div>
+            </div>
+        </div>
+    </div>
+
+</ng-template>
+
+</div>

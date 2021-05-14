@@ -1,0 +1,42 @@
+<div *ngIf="!mobile">
+  <div *ngFor="let med of allMedia; index as i">
+    <div class="container-fluid my-headline-dt">
+      <div class="row ">
+      <h1>{{mediaLabels[i]}}</h1>
+    </div>
+  </div>
+      <ngb-carousel #carousel [interval]="false" class="dtCarousel">
+          <ng-template ngbSlide *ngFor="let mov of allMedia[i]">
+            <div class="container-fluid dt-media-reel-cfcont">
+              <div class="row">
+                <div class="col-2 dt-pic-trans justify-content-center" *ngFor="let m of mov" (click)="redirect(m)">
+                  <img class="card-img-top" [src]="m.poster" alt="Media" >
+                  <div class="card-img-overlay d-flex flex-column">
+                      <div class="card-title-dt mt-auto align-self-center">{{m.title}}</div>
+                  </div>
+              </div>
+            </div>
+          </div>
+          </ng-template>
+      </ngb-carousel>
+  </div>
+</div>
+
+<div *ngIf="mobile">
+  <div *ngFor="let med of allMedia; index as i">
+    <div class="container">
+      <h1 class="row justify-content-center mb-title-cont-reel">{{mediaLabels[i]}}</h1>
+    </div>
+  <ngb-carousel #carousel class="mbCarousel" [interval]="false">
+      <ng-template ngbSlide *ngFor="let m of allMedia[i]">
+          <div class="container">
+          <div class="col-8 singleItem align-self-center" (click)="redirect(m)">
+              <img [src]="m.poster" alt="Media" class="card-img-top">
+              <div class="card-img-overlay d-flex flex-column">
+                  <div class="card-title-mb mt-auto align-self-center">{{m.title}}</div>
+              </div>
+          </div>
+      </div>
+      </ng-template>
+  </ngb-carousel>
+</div>

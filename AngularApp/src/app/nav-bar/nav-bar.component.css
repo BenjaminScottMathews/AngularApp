@@ -1,0 +1,58 @@
+.navbar
+{
+    margin: auto;
+    margin-bottom: 35px;
+    background-color: rgba(0, 0, 0, .7);
+}
+
+#typeahead-basic
+{
+    background-color: rgba(0,0,0,0.0);
+    color: white;
+    border-radius: 0px;
+    border: none;
+    border-bottom: 2px white solid;
+    width: 80%;
+    text-overflow: clip;
+}
+
+#typeahead-basic:focus
+{
+    border-radius: 0px;
+    border: none;
+    border-bottom: 2px white solid;
+    outline:none;
+}
+
+input:focus, input:active
+{
+    outline: none;
+}
+
+.dropdown-menu
+{
+    width: 100%;
+    margin: -2px;
+    background-color: #090040;
+    color: white;
+    border: solid white 1px;
+}
+
+.dropdown-menu img 
+{
+    width: 22%;
+    margin-left: -1em;
+}
+.search-highlight{font-weight: 700;}
+.searchText
+{
+    color:white;
+    line-height: 300%;
+    text-overflow: clip;
+    margin-bottom: -1em;
+}
+
+.type-ahead-poster
+{
+    object-fit: contain;
+}

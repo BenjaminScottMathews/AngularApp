@@ -1,0 +1,272 @@
+/* DESKTOP STLYING */
+div{color: white;}
+
+.full-container-dt-mb
+{
+    margin: 0px;
+    padding: 0px;
+    margin-right: -1em;
+    width: 100%;
+    justify-content: center;
+}
+
+.detail-container
+{
+    width: 80%;
+    padding: 0px;
+}
+
+.detail-container .row 
+{
+    margin-bottom: 8px;
+    margin-top: 8px;
+    margin-left: 5px;
+}
+
+.card-body {color: black;}
+.card
+{
+    width: 10em;
+    margin: 15%;
+}
+
+.modal-dialogue div
+{
+    color: black;
+}
+
+.card:hover {cursor: pointer;}
+
+#castCards::-webkit-scrollbar-track
+{
+    background-color: rgb(255,255,255,.1);
+    border: solid 1px rgb(255,255,255,.2);
+    border-radius: 40px;
+}
+
+#castCards::-webkit-scrollbar
+{
+    height: 5px;
+    background: none;
+}
+
+#castCards::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    background-color: rgb(255,255,255, .7);
+}
+
+.text-container h1
+{
+    font-weight: 300;
+    font-size: 48px;
+    margin-bottom: -3px;
+}
+
+.media-title
+{
+    margin-left: -20px;
+}
+
+.text-container h4
+{
+    letter-spacing: 1px;
+    opacity: .9;
+    font-size: 22px;
+    font-weight: 200;
+    margin-bottom: 15px;
+}
+
+.text-container
+{
+    margin-left: 1em;
+}
+
+.smallText
+{
+    letter-spacing: 1px;
+    opacity: .9;
+    font-size: 18px;
+    font-weight: 100;
+    margin-bottom: 20px;
+}
+
+.btn
+{
+    font-size: 18px;
+    font-weight: 200;
+    letter-spacing: 1px;
+}
+
+.twitter-share-button {margin-right: 4px;}
+
+.card
+{
+    border: none;
+    border-radius: 10px;
+    margin: 8px;
+    padding: 0px;
+    overflow-y: hidden;
+}
+
+.card .col-2
+{
+    width: 95%;
+}
+
+.card-title
+{
+    margin-top: -1em;
+    padding-top: .6em;
+    line-height: 1;
+}
+
+.card img
+{
+    width: 100%;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.card-body
+{
+    text-align: center;
+    color:black;
+}
+
+#castCards
+{
+    height: 28em;
+}
+
+
+#smallCastText
+{
+    font-weight: 200;
+    font-size: 16px;
+}
+
+.description-row
+{
+    padding-top: 1em;
+    text-align: justify;
+}
+
+.alert
+{
+    color:black;
+}
+
+.modal-body div
+{
+    margin-top: .2em;
+}
+
+
+/* MOBILE STYLING */
+.mb-details h4
+{
+    font-size: 20px;
+}
+
+.mb-details
+{
+    margin-left: -1em;
+}
+
+.detail-container-mb
+{
+    margin: auto;
+    width: 82%;
+}
+
+#alert-mb, #alertR-mb
+{
+    margin-left: -2em;
+}
+
+.cast-headline-mb
+{
+    text-align: left;
+    margin-left: -.5em;
+}
+
+.cast-container-mb
+{
+    width: 100%;
+    margin-left: -1em;
+}
+
+#castCards-mb
+{
+    width: 135%;
+    margin-left: -20px;
+}
+
+.card-mb
+{
+    height: 22em;
+    margin: 12px;
+    overflow-y: hidden;
+}
+
+#castCards-mb::-webkit-scrollbar-track
+{
+    background-color: rgb(255,255,255,0);
+    border: solid 1px rgb(255,255,255,0);
+    border-radius: 40px;
+}
+
+#castCards-mb::-webkit-scrollbar
+{
+    height: 5px;
+    background: none;
+}
+
+#castCards-mb::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    background-color: rgb(255,255,255, 0);
+}
+
+.btn-mb
+{
+    margin-top: -5px;
+    margin-left: 0em;
+}
+
+.alert-container-mb
+{
+    padding-left: 2em;
+}
+
+.description-row-mb
+{
+    margin-top: 1em;
+    margin-left: -1em;
+    text-align: justify;
+}
+
+.card-body-mb
+{
+    padding-top: 1em;
+    color: black;
+    text-align: center;
+}
+
+#castCards-mb
+{
+    margin-left: -2.5em;
+}
+
+.social-icons a
+{
+    margin-right: .3em;
+}
+
+.modal-body
+{
+    height: 85vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}

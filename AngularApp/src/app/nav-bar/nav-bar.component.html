@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-md navbar-dark col-12">
+  <a class="navbar-brand" routerLink='/' href="">USC Films</a>
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+    <ul class="navbar-nav mt-2 mt-lg-0">
+      <li class="nav-item align-self-end">
+        <a routerLink='/' routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link" href="">Home</a>
+      </li>
+      <li class="nav-item align-self-end">
+        <a routerLink='/mylist' routerLinkActive="active" class="nav-link" href="./mylist">My List</a>
+      </li>
+    </ul>
+  
+    <ng-template ngbTabTitle #rt let-r="result" let-t="term">
+      <div (click)="redirect(r)">
+        <img [src]="r.poster" class="mr-1 type-ahead-poster">
+        <ngb-highlight class="searchText col-9" [result]="r.title" [term]="t" [highlightClass]="'search-highlight'"></ngb-highlight>
+      </div>
+    </ng-template>
+    <form class="form-inline my-2 my-lg-0 col-lg-3">
+      <input id="typeahead-basic" type="text" name="searchBar" placeholder="Search" class="form-control mr-sm-2" aria-label="Search"
+      [(ngModel)]="search_response" 
+      [ngbTypeahead]="search"
+      [inputFormatter] = "input"
+      [resultTemplate] = "rt"/>
+    </form>
+  </div>
+  </nav>
